@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Gnome : MonoBehaviour
 {
-    // Объект, за которым должна следовать камера.
+    /// <summary>
+    /// Объект, за которым должна следовать камера.
+    /// </summary>
     public Transform cameraFollowTarget;
 
     public Rigidbody2D ropeBoby;

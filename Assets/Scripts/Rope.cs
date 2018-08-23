@@ -22,6 +22,7 @@ public class Rope : MonoBehaviour {
     public float ropeSpeed = 2.0f;
     // Визуализатор LineRenderer, отображающий веревку.
     LineRenderer lineRenderer;
+
     void Start () {
         // Кэшировать ссылку на визуализатор, чтобы
         // не пришлось искать его в каждом кадре.
@@ -30,7 +31,10 @@ public class Rope : MonoBehaviour {
         ResetLength();
     }
 
-    // Удаляет все звенья и создает новое.
+
+    /// <summary>
+    /// Удаляет все звенья и создает новое.
+    /// </summary>
     public void ResetLength()
     {
         foreach (GameObject segment in ropeSegments)
@@ -43,7 +47,9 @@ public class Rope : MonoBehaviour {
         CreateRopeSegment();
     }
 
-    // Добавляет новое звено веревки к верхнему концу.
+    /// <summary>
+    /// Добавляет новое звено веревки к верхнему концу.
+    /// </summary>
     void CreateRopeSegment()
     {
         // Создать новое звено.
@@ -81,8 +87,7 @@ public class Rope : MonoBehaviour {
         }
         else
         {
-            // Это не первое звено. Его нужно соединить
-            // с предыдущим звеном
+            // Это не первое звено. Его нужно соединить с предыдущим звеном
             // Получить второе звено
             GameObject nextSegment = ropeSegments[1];
             // Получить сочленение для соединения

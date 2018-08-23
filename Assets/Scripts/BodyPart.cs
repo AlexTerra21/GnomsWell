@@ -20,8 +20,11 @@ public class BodyPart : MonoBehaviour
     // быть удалены все коллизии, сочленения и твердое тело
     bool detachd = false;
 
-    // Отделяет объект this от родителя и устанавливает флаг,
-    // требующий удаления физических свойств
+
+    /// <summary>
+    /// Отделяет объект this от родителя и устанавливает флаг,
+    /// требующий удаления физических свойств
+    /// </summary>
     public void Detach () {
         detachd = true;
 
@@ -70,8 +73,12 @@ public class BodyPart : MonoBehaviour
         }
     }
 
-    // Заменяет спрайт этой части тела, исходя из
-    // вида полученного повреждения
+    
+    /// <summary>
+    /// Заменяет спрайт этой части тела, исходя из
+    /// вида полученного повреждения
+    /// </summary>
+    /// <param name="damageType">Тип повреждения</param>
     public void ApplyDamageSprite(Gnome.DamageType damageType)
     {
         Sprite spriteToUse = null;

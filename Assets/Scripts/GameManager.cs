@@ -154,12 +154,170 @@ public class GameManager : Singleton<GameManager>
             // Установить признак отсутствия текущего гномика
             currentGnome = null;
         }
-
-
-
-
-
-
-
     }
+
+    /// <summary>
+    /// Убивает гномика.
+    /// </summary>
+    /// <param name="damageType"></param>
+    void KillGnome(Gnome.DamageType damageType)
+    {
+        // Если задан источник звука, проиграть звук "гибель гномика"
+        var audio = GetComponent<AudioSource>();
+        if (audio)
+        {
+            audio.PlayOneShot(this.gnomeDiedSound);
+        }
+
+        // Показать эффект действия ловушки
+        currentGnome.ShowDamageEffect(damageType);
+
+        // Если гномик уязвим, сбросить игру и исключить гномика из игры.
+        if (gnomeInvincible == false)
+        {
+            // Сообщить гномику, что он погиб
+            currentGnome.DestroyGnome(damageType);
+
+            // Удалить гномика
+            RemoveGnome();
+
+            // Сбросить игру
+            StartCoroutine(ResetAfterDelay());
+        }
+    }
+
+    /// <summary>
+    /// Вызывается в момент гибели гномика.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ResetAfterDelay()
+    {
+        // Ждать delayAfterDeath секунд, затем вызвать Reset
+        yield return new WaitForSeconds(delayAfterDeath);
+        Reset();
+    }
+
+    /// <summary>
+    /// Вызывается, когда гномик касается ловушки с ножами
+    /// </summary>
+    public void TrapTouched()
+    {
+        KillGnome(Gnome.DamageType.Slicing);
+    }
+
+    /// <summary>
+    /// Вызывается, когда гномик касается огненной ловушки
+    /// </summary>
+    public void FireTrapTouched()
+    {
+        KillGnome(Gnome.DamageType.Burning);
+    }
+
+    /// <summary>
+    /// Вызывается, когда гномик касается сокровища.
+    /// </summary>
+    public void TreasureCollected()
+    {
+        currentGnome.holdingTreasure = true;
+    }
+
+    /// <summary>
+    /// Вызывается, когда гномик касается выхода.
+    /// </summary>
+    public void ExitReached()
+    {
+        // Завершить игру, если есть гномик и он держит сокровище!
+        if (currentGnome != null && currentGnome.holdingTreasure == true)
+        {
+            //Если задан источник звука, проиграть звук "игра завершена"
+            var audio = GetComponent<AudioSource>();
+            if (audio)
+            {
+                audio.PlayOneShot(this.gameOverSound);
+            }
+
+            // Приостановить игру
+            Time.timeScale = 0.0f;
+
+            // Выключить меню завершения игры и включить экран "игра завершена"!
+            if (gameOverMenu)
+            {
+                gameOverMenu.gameObject.SetActive(true);
+            }
+
+            if (gameplayMenu)
+            {
+                gameplayMenu.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    /// <summary>
+    /// // Вызывается в ответ на касание кнопок Menu и Resume Game.
+    /// </summary>
+    /// <param name="paused"></param>
+    public void SetPaused(bool paused)
+    {
+        // Если игра на паузе, остановить время и включить меню (и выключить интерфейс игры)
+        if (paused)
+        {
+            Time.timeScale = 0.0f;
+            mainMenu.gameObject.SetActive(true);
+            gameplayMenu.gameObject.SetActive(false);
+        }
+        else
+        {
+            // Если игра не на паузе, возобновить ход времени и выключить меню (и включить интерфейс игры)
+            Time.timeScale = 1.0f;
+            mainMenu.gameObject.SetActive(false);
+            gameplayMenu.gameObject.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    ///  Вызывается в ответ на касание кнопки Restart.
+    /// </summary>
+    public void RestarmGame()
+    {
+        // Немедленно удалить гномика (минуя этап гибели)
+        Destroy(currentGnome.gameObject);
+        currentGnome = null;
+
+        // Сбросить игру в исходное состояние, чтобы создать нового гномика.
+        Reset();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

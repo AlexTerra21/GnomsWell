@@ -64,6 +64,10 @@ public class Gnome : MonoBehaviour
         Burning
     }
 
+    /// <summary>
+    /// Отображает эффект повреждения гномика
+    /// </summary>
+    /// <param name="type">Тип повреждения: Slicing - порез, Burning - ожог</param>
     public void ShowDamageEffect(DamageType type)
     {
         switch (type)

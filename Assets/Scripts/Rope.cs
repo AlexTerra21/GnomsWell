@@ -44,6 +44,7 @@ public class Rope : MonoBehaviour {
         ropeSegments = new List<GameObject>();
         isDecreasing = false;
         isIncreasing = false;
+        maxRopeSegmentLength = 1.0f;
         CreateRopeSegment();
     }
 

@@ -250,6 +250,7 @@ public class GameManager : Singleton<GameManager>
                 gameplayMenu.gameObject.SetActive(true);
             }
         }
+        RestarmGame();
     }
 
     /// <summary>

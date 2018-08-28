@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  topLimit: 10
-  bottomLimit: -10
+  topLimit: 0
+  bottomLimit: -5
   followSpeed: 0.5
 --- !u!20 &519420031
 Camera:
@@ -397,7 +397,7 @@ MonoBehaviour:
   ropeSegmentPrefab: {fileID: 1785794901270414, guid: e3a55ead42b76be4c84c68265425873e,
     type: 2}
   connectedObject: {fileID: 0}
-  maxRopeSegmentLength: 1
+  maxRopeSegmentLength: 0.5
   ropeSpeed: 2
 --- !u!1 &1005260598
 GameObject:
@@ -508,7 +508,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1201149974}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 2.83, z: 0}
+  m_LocalPosition: {x: 0.02, y: 1.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 43336102}
@@ -569,7 +569,7 @@ MonoBehaviour:
   startingPoint: {fileID: 1201149974}
   rope: {fileID: 788904019}
   cameraFollow: {fileID: 519420030}
-  gnomePrefab: {fileID: 1090635631784498, guid: 5cc02b07ff075264eb7a31239802ffa2,
+  gnomePrefab: {fileID: 1090635631784498, guid: 954c7e3c1a539c646bc286fe8cd210ac,
     type: 2}
   mainMenu: {fileID: 0}
   gameplayMenu: {fileID: 0}
@@ -766,7 +766,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.755}
@@ -1395,7 +1395,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.69509506}
+  m_Offset: {x: 0, y: 0.7058699}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1406,7 +1406,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.2, y: 0.70891094}
+  m_Size: {x: 6.2, y: 0.38566542}
   m_EdgeRadius: 0
 --- !u!1 &1920696379
 GameObject:

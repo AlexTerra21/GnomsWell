@@ -247,10 +247,10 @@ public class GameManager : Singleton<GameManager>
 
             if (gameplayMenu)
             {
-                gameplayMenu.gameObject.SetActive(true);
+                gameplayMenu.gameObject.SetActive(false);
             }
         }
-        RestarmGame();
+        //RestarmGame();
     }
 
     /// <summary>
@@ -278,7 +278,7 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     ///  Вызывается в ответ на касание кнопки Restart.
     /// </summary>
-    public void RestarmGame()
+    public void RestartGame()
     {
         // Немедленно удалить гномика (минуя этап гибели)
         Destroy(currentGnome.gameObject);
